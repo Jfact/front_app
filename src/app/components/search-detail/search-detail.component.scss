@@ -1,0 +1,15 @@
+.dropdown-menu a:hover{
+	background-color:#3666b9;
+	color: #fff;
+}
+
+.result-false{
+	opacity: .5;
+}
+
+.result-false:hover{
+	opacity: 1;
+	-webkit-transition: opacity 1000ms linear;
+	-ms-transition: opacity 1000ms linear;
+	transition: opacity 1000ms linear;
+}

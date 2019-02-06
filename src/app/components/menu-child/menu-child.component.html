@@ -1,0 +1,17 @@
+<div class="pull-right side-menu">
+  
+  <div *ngIf="user">
+  
+    <p class="text-muted">{{user.first_name}} {{user.last_name}}</p>
+    <p class="text-muted">Роль: <em>{{roles[user.role.name]}}</em></p>
+    <hr>
+  
+  </div>
+
+  <ul class="nav flex-column" *ngFor='let item of menu'>
+    <li class="nav-item">
+      <p><a routerLink="{{item.uri}}"><i class="{{item.icon}}"></i> {{item.title}}</a></p>
+    </li>
+  </ul>
+
+</div>

@@ -1,0 +1,19 @@
+<div style="margin-top: 15px;" *ngIf="documents?.length > 0">
+  <h5 class="text-muted" >Выбранно документов - {{documents?.length}}</h5>
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let document of documents">
+        <td>
+          <p style="padding: 0; margin:0;"><small><em>"{{document.details.title}}"</em></small></p>
+          <p style="padding: 0; margin:0;"><small> {{document.details.author}} {{document.details.year}}</small></p>
+        </td>
+        <td>
+            <p class="pull-right" style="padding: 0; margin:0;"><button class="btn btn-outline-danger btn-sm" tooltip="Удалить" data-placement="top" (click)="delDocument(document.details.track_info)"><i class="fa fa-fw fa-times"></i></button></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-danger btn-sm" tooltip="Удалить все документы из списка" data-placement="bottom" (click)="clsDocuments()"><i class="fa fa-fw fa-trash"></i> Очистить</button>
+  <a routerLink="/documents" class="btn btn-primary btn-sm" tooltip="Добавить к новуму или уже существующиму запросу" data-placement="bottom"> <i class="fa fa-fw fa-plus"></i> Добавить к запросу</a>
+</div>

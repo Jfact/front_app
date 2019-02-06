@@ -1,0 +1,132 @@
+<main role="main" class="content">
+
+    <div class="row justify-content-center" style="width: 100%;">
+  
+      <div class="col-md-3">
+
+        <div *ngIf='searchHistory?.length > 0' style="max-width:320px; margin-top: 4px;" class="pull-right">
+          <p class="text-muted pull-right">История поиска</p>
+          <br><hr>
+          <div class="list-group pull-right" style="max-height:366px; width:300px; overflow-y: scroll; padding-right: 10px;">
+            <a [routerLink]="['/search', item.id]" class="list-group-item list-group-item-action list-group-item-light" *ngFor='let item of searchHistory'>
+              <p style="padding:0; margin:0;"><em>"{{item.query}}"</em></p>
+              <p style="padding:0; margin:0;"><small><small><i class="fa fa-fw fa-calendar"></i> {{item.created_at | date:'dd/MM/yyyy HH:mm'}}</small></small></p>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="row">
+         
+          <div class="col-md-9">    
+            <form [formGroup]="searchFastForm" (ngSubmit)="post(searchFastForm.value)" [@searchTypeFast]="state">
+              
+              <h4> Быстрый поиск </h4>
+            
+              <hr>
+
+              <label for="query">Строка для поискового запроса</label>
+              <input id="query" type="text" formControlName="query" class="form-control" placeholder="Строка для поискового запроса">
+              
+              <br>
+
+              <label for="catalog">Каталог для поискового запроса</label>
+              <select class="custom-select" id="catalog" formControlName="catalog">
+                <option selected value="ekc">Ekc</option>
+              </select>
+              <br><br>
+
+              <label for="limit">Ограничить количество выдаваемых результатов</label>
+              <select class="custom-select" id="limit" formControlName="limit">
+                <option [ngValue]="null"></option>
+                <option value="10">10 результатов</option>
+                <option value="20">20 результатов</option>
+                <option value="30">30 результатов</option>
+                <option value="40">40 результатов</option>
+                <option value="50">50 результатов</option>
+                <option value="60">60 результатов</option>
+                <option value="70">70 результатов</option>
+                <option value="80">80 результатов</option>
+                <option value="90">90 результатов</option>
+                <option value="100" selected>100 результатов</option>
+              </select>
+              
+              <br><br>
+              
+              <button type="submit" class="btn btn-outline-primary pull-right" [disabled]="!searchFastForm.valid"><i class="fa fa-fw fa-search"></i> Искать</button>
+            </form>
+
+            <form [formGroup]="searchFullForm" (ngSubmit)="post(searchFullForm.value)" [@searchTypeFull]="state" style="display:none;">
+              
+              <h4> Полынй поиск </h4>
+              
+              <hr>
+                <label for="keyword">Строка для поискового запроса</label>
+                <input id="keyword" type="text" formControlName="keyword" class="form-control" placeholder="Строка для поискового запроса">
+                <br>
+      
+                <label for="full-catalog">Каталог для поискового запроса</label>
+                <select class="custom-select" id="full-catalog" formControlName="catalog">
+                  <option selected value="ekc">Ekc</option>
+                </select>
+                <br><br>
+      
+                <label for="full-limit">Ограничить количество выдаваемых результатов</label>
+                <select class="custom-select" id="full-limit" formControlName="limit">
+                  <option>Все результаты</option>
+                  <option value="10">10 результатов</option>
+                  <option value="20">20 результатов</option>
+                  <option value="30">30 результатов</option>
+                  <option value="40">40 результатов</option>
+                  <option value="50">50 результатов</option>
+                  <option value="60">60 результатов</option>
+                  <option value="70">70 результатов</option>
+                  <option value="80">80 результатов</option>
+                  <option value="90">90 результатов</option>
+                  <option value="100" selected>100 результатов</option>
+                </select>
+                
+                <br><br>
+
+                <label for="full-author">Указать автора документа</label>
+                <input id="full-author" type="text" formControlName="author" class="form-control" placeholder="Автор">
+                <br>
+
+                <label for="full-title">Указать название документа</label>
+                <input id="full-title" type="text" formControlName="title" class="form-control" placeholder="Название">
+                <br>
+
+                <label for="full-year">Указать год документа</label>
+                <input id="full-year" type="text" formControlName="year" class="form-control" placeholder="Год">
+                <br>
+                
+                <button type="submit" class="btn btn-outline-primary pull-right" [disabled]="!searchFullForm.valid"><i class="fa fa-fw fa-search"></i> Искать</button>
+              </form>
+            </div>
+            <div class="col-md-3">
+                <div class="pull-right" style="margin-top:5px;">
+                  <p class="text-muted pull-right">Выберите тип поиска</p>
+                  <br>
+                  <hr>
+                  
+                  <button type="button" class="btn btn-light pull-right" #fast (click)="changeSearchType(fast.value)" value="fast">Быстрый поиск</button>
+                  
+                  <br><br>
+                  
+                  <button type="button" class="btn btn-light pull-right" #full (click)="changeSearchType(full.value)" value="full">Полный поиск</button>
+                </div>
+              </div>
+          </div>
+
+        <br><br><br>
+      </div>
+  
+      <div class="col-md-3">
+          <app-documents-selected>
+          </app-documents-selected>
+      </div> 
+  
+    </div>
+  
+  </main><!-- /.container -->

@@ -1,0 +1,66 @@
+
+
+
+
+
+<main role="main" class="content">
+
+    <div class="row justify-content-center" style="width: 100%;">
+  
+      <div class="col-md-3">
+          <app-menu-child>
+          </app-menu-child>
+      </div>
+
+      <div class="col-md-6">
+
+        <h5>Детали уведомления:</h5>
+        <hr>
+
+        <div *ngIf="action == 'delete'" class="card text-white bg-danger">
+          <div class="card-header">Удаляю уведомление..! Вы скоро вернётесь, к списку уведомлений...</div>
+        </div>
+
+        <div *ngIf="action == 'seen'" class="card text-white bg-primary">
+          <div class="card-header">Помечаю прочитанным..! Вы скоро вернётесь, к списку уведомлений...</div>
+        </div>
+
+        <div *ngIf="notification" style="margin-top: 50px;">
+          <p *ngIf="notification.message && notification.message == 'Not Found'" class="text-muted">Уведомление не найденно, по видимому оно уже удаленно... 
+            <br>
+            Перенаправляю к списку уведомлений...</p>
+            <p><em>"{{notification.text}}"</em></p>
+            <p class="text-muted"><span class="text-muted">
+              <small><small>
+                {{notification.created_at | date:'dd/MM/yyyy HH:mm'}}
+                <span *ngIf="notification.seen == false"> - новое</span>
+              </small></small>
+            </span></p>
+            
+            <br>
+            <hr>
+            
+            <div class="pull-right" *ngIf="action == null">
+
+              <a *ngIf="notification.seen == false" [routerLink]="['/profile/notification', notification.id, 'seen']" 
+                class="btn btn-primary"  
+                tooltip="Пометить прочитанным"
+                data-placement="top"><i class="fa fa-fw fa-eye"></i> Пометить прочитанным</a>
+
+              <a [routerLink]="['/profile/notification', notification.id, 'delete']" 
+                  class="btn btn-danger"  
+                  tooltip="Удалить уведомление" 
+                  data-placement="top"><i class="fa fa-fw fa-trash"></i> Удалить</a>
+            </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+          <app-documents-selected>
+          </app-documents-selected>
+      </div>
+
+    </div>
+</main>

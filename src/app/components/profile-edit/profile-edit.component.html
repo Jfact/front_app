@@ -1,0 +1,57 @@
+<main role="main" class="content">
+
+    <div class="row justify-content-center" style="width: 100%;">
+  
+      <div class="col-md-3">
+
+        <app-menu-child>
+        </app-menu-child>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <form [formGroup]="editUserForm" (ngSubmit)="put(editUserForm.value)" *ngIf="user">
+          <h5>Персональные данные</h5>
+          <hr>
+          <label for="first_name">Имя пользователя</label>
+          <input id="first_name" type="text" formControlName="first_name" class="form-control" placeholder=""><br>
+      
+          <label for="last_name">Фамилия пользователя</label>
+          <input id="last_name" type="text" formControlName="last_name" class="form-control" placeholder=""><br>
+      
+          <label for="patronymic_name">Отчество пользователя</label>
+          <input id="patronymic_name" type="text" formControlName="patronymic_name" class="form-control" placeholder=""><br>
+
+          <h5>Контактные данные</h5>
+          <hr>
+
+          <label for="phone">Телефон пользователя</label>
+          <input id="phone" type="text" formControlName="phone" class="form-control" placeholder=""><br>
+      
+          <label for="email">Эдектронная почта пользователя</label>
+          <input id="email" type="text" formControlName="email" class="form-control" placeholder=""><br>
+
+          <h5>Дополнительные данные</h5>
+          <hr>
+
+          <label for="education">Образование пользователя</label>
+          <input id="education" type="text" formControlName="education" class="form-control" placeholder=""><br>
+      
+          <label for="birth_date">Дата рождения пользователя</label>
+          <input id="birth_date" type="text" formControlName="birth_date" class="form-control" placeholder=""><br>
+
+          <button type="submit" class="btn btn-outline-primary pull-right" [disabled]="!editUserForm.valid"><i class="fa fa-fw fa-pencil"></i> Изменить</button>
+          
+        </form>
+
+      </div>
+
+      <div class="col-md-3">
+          <app-documents-selected>
+          </app-documents-selected>
+      </div>
+
+    </div>
+
+</main>

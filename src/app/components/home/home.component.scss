@@ -1,0 +1,62 @@
+.home-cards{
+    a{ 
+        color:#212529;
+        text-decoration: none;
+    }
+    .card{
+        min-height: 350px;
+        width: 350px;
+        .card-body{
+            margin-top: 50px;
+        }
+        .card-footer{
+            min-height: 75px;
+        }
+        .card-title i{
+            font-size: 100px;
+        }
+    }
+
+    .card-info:hover{
+        background-color: #1bbfd9;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+    }
+
+    .card-success:hover{
+        background-color: #33d358;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+    }
+
+    .card-warning:hover{
+        background-color: #f4e155;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+    }
+
+    .card-search:hover{
+        background-color: #33d358;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+    }
+
+    .card-login:hover{
+        background-color: #1bbfd9;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+    }
+
+    .card-registration:hover{
+        background-color: #f4e155;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+    }
+    
+}

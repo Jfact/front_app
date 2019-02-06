@@ -1,0 +1,61 @@
+<main role="main" class="content">
+
+    <div class="row justify-content-center" style="width: 100%;">
+  
+      <div class="col-md-3">
+
+        <app-menu-child>
+        </app-menu-child>
+
+      </div>
+
+      <div class="col-md-6">
+        <div>
+          <h5>Адреса доставки документов:</h5>
+          <hr>
+          
+          <div *ngIf='user && user.delivery?.length > 0; else no_delivery'>
+            <!-- <form [formGroup]="delAddressForm" (ngSubmit)="put(delAddressForm.value)"> -->
+            <br>
+            <form [formGroup]="delAddressForm" (ngSubmit)="put(delAddressForm.value)">
+              <div *ngFor='let delivery of user.delivery;'>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="elements-{{delivery}}" formControlName="elements" #element value="{{delivery}}" (change)="addElements(element.value, $event.target.checked)">
+                  <label class="form-check-label" for="elements-{{delivery}}">{{delivery}}</label>
+                </div><br>
+              </div>
+
+              <button type="submit" class="btn btn-outline-dark pull-left" [disabled]="!delAddressForm.valid"><i class="fa fa-fw fa-times"></i> Удалить выбранные</button>
+            </form>
+
+            <form [formGroup]="clsAddressForm" (ngSubmit)="put(clsAddressForm.value)" >
+              <button type="submit" class="btn btn-outline-danger pull-right" [disabled]="!clsAddressForm.valid" style="margin-right:10px;"><i class="fa fa-fw fa-trash"></i> Удалить все</button>
+            </form>
+            <br><br>
+          </div>
+          
+          <ng-template #no_delivery>
+            <p class="text-muted">Адреса доставки документов не указанны</p>
+          </ng-template>
+          
+          <hr>
+
+          <form [formGroup]="addAddressForm" (ngSubmit)="put(addAddressForm.value)" *ngIf="user">
+            <label for="elements">Добавить адрес доставки</label>
+            <textarea id="elements" formControlName="elements" rows="3" class="form-control"></textarea><br>
+
+            <button type="submit" class="btn btn-outline-primary pull-right" [disabled]="!addAddressForm.valid"><i class="fa fa-fw fa-location-arrow"></i> Добавить</button>
+          </form>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+          <app-documents-selected>
+          </app-documents-selected>
+      </div>
+
+    </div>
+
+</main>

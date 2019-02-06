@@ -1,0 +1,43 @@
+<main role="main" class="content">
+
+  <div class="row justify-content-center" style="width: 100%;">
+
+  	<div class="col-lg-3">
+  		
+
+  	</div>
+  	
+  	<div class="col-lg-4">
+
+  		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link" routerLink="/sign-in" role="tab">У меня уже есть акканут</a>
+				<a class="nav-item nav-link active" routerLink="/registration" role="tab">Я новый пользователь</a>
+			</div>
+		</nav>
+
+		<br><br>		
+		<p>Введите свои данные, что бы зарегистрироваться в системе.</p>
+		<br>
+
+		<form>
+			<div class="form-group">
+				<label>Имя входа пользователя</label>
+				<input type="text" class="form-control" placeholder="Имя входа пользователя">
+			</div>
+			
+			<div class="form-group">
+				<label>Пароль пользователя</label>
+				<input type="password" class="form-control" placeholder="Пароль пользователя">
+			</div>
+			<a routerLink=""><i class="fa fa-fw fa-long-arrow-left"></i> Вернуться на главную</a>
+			<button type="submit" class="btn btn-outline-primary pull-right"><i class="fa fa-fw fa-sign-in"></i> Войти</button>
+		</form>
+
+  	</div>
+
+  	<div class="col-lg-3"></div>
+
+  </div>
+
+</main><!-- /.container -->

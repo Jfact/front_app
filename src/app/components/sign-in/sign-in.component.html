@@ -1,0 +1,39 @@
+<main role="main" class="content">
+
+  <div class="row justify-content-center" style="width: 100%;">
+
+  	<div class="col-lg-3">
+  		
+
+  	</div>
+  	
+  	<div class="col-lg-4">
+  		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link active" routerLink="/sign-in" role="tab">У меня уже есть акканут</a>
+				<a class="nav-item nav-link" routerLink="/registration" role="tab">Я новый пользователь</a>
+			</div>
+		</nav>
+
+		<br><br>		
+		
+		<h5>Введите свои данные, что бы войти в систему.</h5>
+		
+		<br>
+
+		<form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)">
+			<label for="userName">Имя входа пользователя</label>
+			<input id="userName" type="text" formControlName="userName" class="form-control" placeholder="Имя входа пользователя">
+			<br>
+			<label for="userPassword">Пароль пользователя</label>
+			<input id="userPassword" type="password" formControlName="userPassword" class="form-control" placeholder="Пароль пользователя">
+			<br>
+			<button type="submit" class="btn btn-outline-primary pull-right" [disabled]="!signInForm.valid"><i class="fa fa-fw fa-sign-in"></i> Войти</button>
+		</form>
+  	</div>
+
+  	<div class="col-lg-3"></div>
+
+  </div>
+
+</main><!-- /.container -->

@@ -1,0 +1,93 @@
+
+  <main role="main" class="content">
+
+      <div class="row justify-content-center" style="width: 100%;">
+    
+        <div class="col-md-3">
+            <app-menu-child>
+            </app-menu-child>
+        </div>
+
+        <div class="col-md-6">
+          <div *ngIf="user.first_name">
+            
+            <h5>
+              {{user.last_name}} {{user.first_name}} {{user.patronymic_name}} 
+              <small class="text-muted">{{roles[user.role.name]}}</small>
+              
+              <span class="badge badge-success pull-right" *ngIf="user.active === true; else user_blocked">Активный</span>
+              
+              <ng-template #user_blocked>
+                <span class="badge badge-success pull-right">Заблокирован</span>
+              </ng-template>
+
+            </h5>
+
+            <hr>
+
+            <div class="pull-left">
+              <p><i class="fa fa-fw fa-envelope"></i> {{user.email}}</p>
+              <p><i class="fa fa-fw fa-phone"></i> {{user.phone}}</p>
+              
+            </div>
+
+            <div class="pull-right">
+              <p><strong class="text-muted">Родился:</strong> {{user.birth_date | date:'MMMM d, y'}}</p>
+              <p class="pull-right"><strong class="text-muted">Учился:</strong> {{user.education}}</p>
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div class="pull-left">
+              <p><strong class="text-muted">Баланс: {{user.balance / 100}} <i class="fa fa-fw fa-ruble text-muted"></i></strong></p>
+              <a href="#">Поплнить баланс</a>
+            </div>
+
+            <div class="pull-right">
+              <p class="text-muted pull-right" *ngIf="user.contragent != null; else no_contragent">Договор публичной оферты принят</p>
+              <ng-template #no_contragent>
+                <p class="text-muted pull-right">Договор публичной оферты не принят</p>
+              </ng-template>
+              <br>
+              <p class="text-muted pull-right" *ngIf="user.researcher == true; else user_not_researcher">Пользователь является исследователем</p>
+              <ng-template #user_not_researcher>
+                  <p class="text-muted pull-right">Пользователь не является исследователем</p>
+              </ng-template>
+              <br>
+              <p class="pull-right" *ngIf="user.organization != null; else no_organization">
+                <strong class="text-muted">Состоит в организации:</strong> 
+                <a href="#">{{user.organization.name}}</a>
+              </p>
+              <ng-template #no_organization>
+                <p class="text-muted pull-right">Пользователь не состоит в организации</p>
+              </ng-template>
+              <br><br><br><br>
+              
+              <a routerLink="/profile/edit" class="btn btn-outline-primary pull-right"><i class="fa fa-fw fa-pencil-square"></i> Изменить профиль</a>
+            </div>
+
+            <br><br><br><br><br><br><br><br>
+            
+            <hr>
+            <div>
+              <p><strong class="text-muted">Адреса доставки документов:</strong></p>
+              <div *ngIf='user.delivery?.length > 0; else no_delivery'>
+                <div *ngFor='let delivery of user.delivery;'><p>{{delivery}}</p></div>
+              </div>
+              <ng-template #no_delivery><p>Адреса доставки документов не указанны</p></ng-template>
+            </div>
+
+            <br>
+
+            <a routerLink="/profile/address" class="btn btn-outline-primary"><i class="fa fa-fw fa-location-arrow"></i> Редактировать адреса</a>
+
+          </div>
+        </div>
+
+        <div class="col-md-3">
+            <app-documents-selected>
+            </app-documents-selected>
+        </div>
+
+      </div>
+  </main>
